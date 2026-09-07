@@ -445,10 +445,10 @@ module nes_top (
     end else begin
       if (joypad_out[0]) begin
         joypad_bits <= {
-          multitap_enabled ? {8'h08, nes_joy_C} : 16'hFFFF, joy_swap ? nes_joy_B : nes_joy_A
+          multitap_enabled ? {8'h08, nes_joy_C} : 16'hFFFF, joy_swap ? nes_joy_A | nes_joy_B : nes_joy_A
         };
         joypad_bits2 <= {
-          multitap_enabled ? {8'h04, nes_joy_D} : 16'hFFFF, joy_swap ? nes_joy_A : nes_joy_B
+          multitap_enabled ? {8'h04, nes_joy_D} : 16'hFFFF, nes_joy_B
         };
 
         // joypad_d4 <= paddle_en ? paddle_nes : {4'b1111, powerpad[7], powerpad[11], powerpad[2], powerpad[3]};
